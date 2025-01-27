@@ -1,0 +1,11 @@
+services:
+  pdvacai:
+    image: bitnami/postgresql
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    environment:
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_DATABASE=${DB_NAME}
+    env_file:
+      - .env
