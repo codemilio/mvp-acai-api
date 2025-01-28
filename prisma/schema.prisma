@@ -47,8 +47,30 @@ model Ingredient {
   nr_type         IngredientType @default(ADDITIONAL)
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
+  Brand           Brand?         @relation(fields: [brandId], references: [id])
+  brandId         String?
 
   @@map("tb_ingredients")
+}
+
+model Brand {
+  id       String @id @default(uuid())
+  nm_brand String @db.VarChar(255)
+
+  // Relacionamento com os ingredientes
+  ingredients Ingredient[]
+
+  @@map("tb_brands")
+}
+
+model Platform {
+  id          String   @id @default(uuid())
+  nm_platform String
+  nr_rate     Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("tb_platforms")
 }
 
 // model Brand {
