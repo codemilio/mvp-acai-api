@@ -39,6 +39,7 @@ enum IngredientType {
 model Ingredient {
   id              String         @id @default(uuid())
   nm_ingredient   String         @db.VarChar(255)
+  avatar_url      String         @db.VarChar(255)
   nm_mark         String         @db.VarChar(255)
   nr_amount       Float
   nm_measure      Measure        @default(G)
